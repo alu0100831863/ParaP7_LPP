@@ -10,11 +10,11 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Clase gema P7.}
   spec.description   = %q{Clase gema lista y TDD}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alu0100831863/ParaP7_LPP.git"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)
-	  spec.metadata["allowed_push_host"] = ""
+	  spec.metadata["allowed_push_host"] = "https://github.com/alu0100831863/ParaP7_LPP.git"
   else
 	  raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end

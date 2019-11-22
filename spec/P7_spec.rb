@@ -13,7 +13,7 @@ require '/home/usuario/LPP/ListaTDD/P7/lib/P7/alimentos'
 require '/home/usuario/LPP/ListaTDD/P7/lib/P7/lista'
 #fin require
 
-describe Alimentos do
+describe Lista do
 	before :each do		
 		@carne_vaca = Alimentos.new('carne de vaca', 21.1, 0.0, 3.1, 50.0, 164.0)
 		@carne_cordero = Alimentos.new('carne de cordero', 18.0, 0.0, 17.0, 20.0, 185.0)
@@ -64,6 +64,7 @@ describe Alimentos do
             expect(@node).to be_truthy
             expect(@node.value).to be(10)
             expect(@node.next).to eq(nil)
+            expect(@node.prev).to eq(nil)
         end
         it "Comprobacion del tail de la Lista: " do
             expect(@listaEspanyola.tail.value).to eq(@cerveza)
@@ -111,6 +112,16 @@ describe Alimentos do
             expect(@node.next).to eq(nil)
             @listaVegetaria.insert_tail(@tofu)
             expect(@listaVegetaria.head.next.value).to eq(@tofu)
+        end
+    end
+    describe "#Instanciaciones y herencias: " do
+        it "Is_a: " do
+            expect(@tofu).is_a?(Object)
+            expect(@node).is_a?(BasicObject)
+        end
+        it "Instance_of: " do
+            expect(@tofu).instance_of?(Alimentos)
+            expect(@listaVegetaria).instance_of?(Lista)
         end
     end
 end

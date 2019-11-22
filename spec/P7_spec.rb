@@ -8,10 +8,13 @@
 #  end
 #end
 
+require 'rspec'
 require 'spec_helper.rb'
 require_relative '../lib/P7/alimentos.rb'
 require_relative '../lib/P7/lista.rb'
 #fin require
+#
+include RSpec
 
 describe Lista do
 	before :each do		

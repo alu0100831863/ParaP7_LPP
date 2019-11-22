@@ -1,22 +1,20 @@
+require 'spec_helper.rb'
+require_relative '../lib/P7/alimentos.rb'
+require_relative '../lib/P7/lista.rb'
+
 #RSpec.describe P7 do
 #  it "has a version number" do
 #    expect(P7::VERSION).not_to be nil
 #  end
-
+#
 #  it "does something useful" do
 #    expect(false).to eq(true)
 #  end
 #end
 
-require 'rspec'
-require 'spec_helper.rb'
-require_relative '../lib/P7/alimentos.rb'
-require_relative '../lib/P7/lista.rb'
-#fin require
-#
-include RSpec
+#include RSpec
 
-describe Lista do
+RSpec.describe Lista do
 	before :each do		
 		@carne_vaca = Alimentos.new('carne de vaca', 21.1, 0.0, 3.1, 50.0, 164.0)
 		@carne_cordero = Alimentos.new('carne de cordero', 18.0, 0.0, 17.0, 20.0, 185.0)
@@ -34,33 +32,33 @@ describe Lista do
 		@lentejas = Alimentos.new('lentejas', 23.5, 52.0, 1.4, 0.4, 3.4)
 		@nuez = Alimentos.new('nuez', 20.0, 21.0, 54.0, 0.3, 7.9)
 
-        @listaEspanyola = Lista.new(nil)
-            @listaEspanyola.insert_tail(@salmon)
-            @listaEspanyola.insert_tail(@camarones)
-            @listaEspanyola.insert_tail(@queso)
-            @listaEspanyola.insert_tail(@cerveza)
+        	@listaEspanyola = Lista.new(nil)
+            	@listaEspanyola.insert_tail(@salmon)
+            	@listaEspanyola.insert_tail(@camarones)
+            	@listaEspanyola.insert_tail(@queso)
+            	@listaEspanyola.insert_tail(@cerveza)
 
-        @listaVasca = Lista.new(nil)
-            @listaVasca.insert_tail(@carne_vaca)
-            @listaVasca.insert_tail(@cafe)
-            @listaVasca.insert_tail(@chocolate)
+        	@listaVasca = Lista.new(nil)
+            	@listaVasca.insert_tail(@carne_vaca)
+            	@listaVasca.insert_tail(@cafe)
+            	@listaVasca.insert_tail(@chocolate)
             
-        @listaVegetaria = Lista.new(nil)
-            @listaVegetaria.insert_tail(@leche_vaca)
-            @listaVegetaria.insert_tail(@huevos)
+        	@listaVegetaria = Lista.new(nil)
+            	@listaVegetaria.insert_tail(@leche_vaca)
+            	@listaVegetaria.insert_tail(@huevos)
         
-        @listaVegetaliana = Lista.new(nil)
-            @listaVegetaliana.insert_tail(@lentejas)
-            @listaVegetaliana.insert_tail(@tofu)
-            @listaVegetaliana.insert_tail(@nuez)
+        	@listaVegetaliana = Lista.new(nil)
+            	@listaVegetaliana.insert_tail(@lentejas)
+            	@listaVegetaliana.insert_tail(@tofu)
+            	@listaVegetaliana.insert_tail(@nuez)
             
-        @listaCarne = Lista.new(nil)
-            @listaCarne.insert_tail(@carne_cordero)
-            @listaCarne.insert_tail(@cerdo)
-            @listaCarne.insert_tail(@pollo)
+        	@listaCarne = Lista.new(nil)
+            	@listaCarne.insert_tail(@carne_cordero)
+            	@listaCarne.insert_tail(@cerdo)
+            	@listaCarne.insert_tail(@pollo)
 
-        @node = Node.new(10, nil, nil)
-    end
+        	@node = Node.new(10, nil, nil)
+    	end
     
     describe "#Lista: " do
         it "Comprobacion de los nodos: " do
@@ -109,12 +107,12 @@ describe Lista do
         end
         it "Doblemente enlazada: PREV: " do
             expect(@node.prev).to eq(nil)
-            expect(@listaVegetaria.tail.prev).to eq(nil)
+	    expect(@listaVegetaria.tail.prev.value).to eq(@leche_vaca)
         end
         it "Doblemente enlazada: NEXT: " do
             expect(@node.next).to eq(nil)
             @listaVegetaria.insert_tail(@tofu)
-            expect(@listaVegetaria.head.next.value).to eq(@tofu)
+            expect(@listaVegetaria.head.next.value).to eq(@huevos)
         end
     end
     describe "#Instanciaciones y herencias: " do

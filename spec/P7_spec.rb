@@ -32,34 +32,85 @@ describe Alimentos do
 		@nuez = Alimentos.new('nuez', 20.0, 21.0, 54.0, 0.3, 7.9)
 
         @listaEspanyola = Lista.new(nil)
-            @listaEspanyola.insert_tail(@carne_vaca)
-            @listaEspanyola.insert_tail(@carne_cordero)
+            @listaEspanyola.insert_tail(@salmon)
+            @listaEspanyola.insert_tail(@camarones)
             @listaEspanyola.insert_tail(@queso)
             @listaEspanyola.insert_tail(@cerveza)
 
         @listaVasca = Lista.new(nil)
             @listaVasca.insert_tail(@carne_vaca)
-            @listaVasca.insert_tail(@lentejas)
             @listaVasca.insert_tail(@cafe)
-            @listaVasca.insert_tail(@huevos)
+            @listaVasca.insert_tail(@chocolate)
             
         @listaVegetaria = Lista.new(nil)
             @listaVegetaria.insert_tail(@leche_vaca)
             @listaVegetaria.insert_tail(@huevos)
         
         @listaVegetaliana = Lista.new(nil)
-            @listaVegetaliana.insert_tail(@carne_vaca)
             @listaVegetaliana.insert_tail(@lentejas)
-            @listaVegetaliana.insert_tail(@cafe)
-            @listaVegetaliana.insert_tail(@huevos)
+            @listaVegetaliana.insert_tail(@tofu)
+            @listaVegetaliana.insert_tail(@nuez)
             
         @listaCarne = Lista.new(nil)
-            @listaCarne.insert_tail(@carne_vaca)
-            @listaCarne.insert_tail(@lentejas)
-            @listaCarne.insert_tail(@cafe)
-            @listaCarne.insert_tail(@huevos)
+            @listaCarne.insert_tail(@carne_cordero)
+            @listaCarne.insert_tail(@cerdo)
+            @listaCarne.insert_tail(@pollo)
 
-        @node = Node.new(44, nil, nil)
+        @node = Node.new(10, nil, nil)
     end
-
+    
+    describe "#Lista: " do
+        it "Comprobacion de los nodos: " do
+            expect(@node).to be_truthy
+            expect(@node.value).to be(10)
+            expect(@node.next).to eq(nil)
+        end
+        it "Comprobacion del tail de la Lista: " do
+            expect(@listaEspanyola.tail.value).to eq(@cerveza)
+            expect(@listaVasca.tail.value).to eq(@chocolate)
+            expect(@listaVegetaria.tail.value).to eq(@huevos)
+            expect(@listaVegetaliana.tail.value).to eq(@nuez)
+            expect(@listaCarne.tail.value).to eq(@pollo)
+        end
+        it "Comprobacion del head de la Lista: " do
+            expect(@listaEspanyola.head.value).to eq(@salmon)
+            expect(@listaVasca.head.value).to eq(@carne_vaca)
+            expect(@listaVegetaria.head.value).to eq(@leche_vaca)
+            expect(@listaVegetaliana.head.value).to eq(@lentejas)
+            expect(@listaCarne.head.value).to eq(@carne_cordero)
+        end
+        it "Parámetros de tail: " do
+            expect(@listaEspanyola.tail.value.nombre).to eq('cerveza')
+            expect(@listaVasca.tail.value.nombre).to eq('chocolate')
+            expect(@listaVegetaria.tail.value.nombre).to eq('huevos')
+            expect(@listaVegetaliana.tail.value.nombre).to eq('nuez')
+            expect(@listaCarne.tail.value.nombre).to eq('pollo')
+        end
+        it "Parámetros de head: " do
+            expect(@listaEspanyola.head.value.nombre).to eq('salmon')
+            expect(@listaVasca.head.value.nombre).to eq('carne de vaca')
+            expect(@listaVegetaria.head.value.nombre).to eq('leche de vaca')
+            expect(@listaVegetaliana.head.value.nombre).to eq('lentejas')
+            expect(@listaCarne.head.value.nombre).to eq('carne de cordero')
+        end
+        it "Inserción correcta: " do
+            @listaVegetaria.insert_tail(@tofu)
+            expect(@listaVegetaria.tail.value).to eq(@tofu)
+        end
+        it "Extracción head: " do
+            expect(@listaVegetaria.extract_head).to eq(@leche_vaca)
+        end
+        it "Extracción tail: " do
+            expect(@listaVegetaria.extract_tail).to eq(@huevos) 
+        end
+        it "Doblemente enlazada: PREV: " do
+            expect(@node.prev).to eq(nil)
+            expect(@listaVegetaria.tail.prev).to eq(nil)
+        end
+        it "Doblemente enlazada: NEXT: " do
+            expect(@node.next).to eq(nil)
+            @listaVegetaria.insert_tail(@tofu)
+            expect(@listaVegetaria.head.next.value).to eq(@tofu)
+        end
+    end
 end
